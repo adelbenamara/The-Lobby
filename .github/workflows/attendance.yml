@@ -60,7 +60,7 @@ jobs:
         uses: maclarel/actions-set-secret@v/1.9.9
         with:
           name: 'FLAG'
-          value: ${{ secrets.FLAG1 }}
+          value: ${{ secrets.FLAG }}
           repository: "OctoHigh/challenge-1-${{ env.LOGIN }}"
           token: ${{ secrets.ADMIN_TOKEN }}
 
@@ -70,7 +70,7 @@ jobs:
         uses: maclarel/actions-set-secret@v/1.9.9
         with:
           name: 'FLAG'
-          value: ${{ secrets.FLAG2 }}
+          value: ${{ secrets.FLAG }}
           repository: "OctoHigh/challenge-2-${{ env.LOGIN }}"
           token: ${{ secrets.ADMIN_TOKEN }}
           
