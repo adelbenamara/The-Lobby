@@ -16,11 +16,8 @@ jobs:
           github-token: ${{ secrets.ADMIN_TOKEN }}
           script: |
             if (context.issue.number === 1) {
-
               console.log('%s showed up to class!', process.env.LOGIN);
-
               console.log('Creating player repos ...');
-
               await github.rest.repos.createUsingTemplate({
                 template_owner: 'OctoHigh',
                 template_repo: 'challenge-1',
@@ -36,7 +33,6 @@ jobs:
               }
               freeze(10000);
               console.log("Done waiting ...");
-
               await github.rest.repos.createUsingTemplate({
                 template_owner: 'OctoHigh',
                 template_repo: 'challenge-2',
@@ -92,14 +88,12 @@ jobs:
               });
               
               console.log('Adding player as collaborator of repo 1 ...');
-
               await github.rest.repos.addCollaborator({
                 owner: 'OctoHigh',
                 repo: `challenge-1-${process.env.LOGIN}`,
                 username: process.env.LOGIN,
                 permission: 'pull'
               });
-
               console.log('Change repository visibility of repo 2 ...');
               
               await github.rest.repos.update({
@@ -107,6 +101,15 @@ jobs:
                 repo: `challenge-2-${process.env.LOGIN}`,
                 private: true
               });
+              
+              console.log('Adding player as collaborator of repo 2 ...');
+              await github.rest.repos.addCollaborator({
+                owner: 'OctoHigh',
+                repo: `challenge-2-${process.env.LOGIN}`,
+                username: process.env.LOGIN,
+                permission: 'pull'
+              });
+            }
               
               console.log('Adding player as collaborator of repo 2 ...');
 
